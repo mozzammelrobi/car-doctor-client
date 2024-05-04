@@ -20,7 +20,10 @@ const NavBar = () => {
         <NavLink to='/' className={({ isActive }) => isActive ? 'font-bold text-orange-500' : 'font-bold'}>Blog</NavLink>
         <NavLink to='/' className={({ isActive }) => isActive ? 'font-bold text-orange-500' : 'font-bold'}>Contact</NavLink>
         {
-            user?.email ? <button onClick={handleLogOut}>LogOut</button>
+            user?.email ? <>
+             <Link to='/bookings'>Bookings</Link>
+                 <button onClick={handleLogOut}>LogOut</button>
+            </>
                 : <NavLink to='/login' className={({ isActive }) => isActive ? 'font-bold text-orange-500' : 'font-bold'}>Login</NavLink>
         }
     </>
