@@ -27,13 +27,13 @@ const router = createBrowserRouter([
             },
             // {
             //     path:'book/:id',
-            //     loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`),
+            //     loader: ({params}) => fetch(`https://car-doctor-server-xi-plum.vercel.app/services/${params.id}`),
             //     element: <BookService></BookService>
             // },
             {
                 path:'checkout/:id',
-                loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`),
-                element:<Checkout></Checkout>
+                loader: ({params}) => fetch(`https://car-doctor-server-xi-plum.vercel.app/services/${params.id}`),
+                element:<PrivateRoutes><Checkout></Checkout></PrivateRoutes>
             },
             {
                 path: 'bookings',

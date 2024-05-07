@@ -1,18 +1,23 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import ServiceCard from "./ServiceCard";
+// import useServices from "../../../hooks/useServices";
 
 
 const Services = () => {
+    // const services = useServices()
     const [services, setServices] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('https://car-doctor-server-xi-plum.vercel.app/services')
             .then(res => res.json())
             .then(data => {
+                console.log(data)
                 setServices(data)
             })
     }, [])
+
+    console.log(services)
     return (
         <div>
             <div className="text-center">
@@ -26,7 +31,7 @@ const Services = () => {
                 }
             </div>
             <div className="flex justify-center mt-4">
-            <button className='btn btn-outline btn-secondary'>Latest Project</button>
+                <button className='btn btn-outline btn-secondary'>Latest Project</button>
             </div>
         </div>
     );

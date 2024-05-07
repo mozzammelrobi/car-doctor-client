@@ -1,27 +1,49 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../assets/images/login/login.svg'
 import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
+// import axios from 'axios';
 
 const Login = () => {
 
-    const {signIn} = useContext(AuthContext)
+    const {signIn,resetPassword} = useContext(AuthContext)
+    const location = useLocation()
+    const navigate = useNavigate()
+    // console.log(location)
 
 
     const handleLogin = (e) => {
         
         e.preventDefault();
-        const form = e.target;
+        // const form = e.tarjget;
         const email = e.target.email.value;
-        const password = e.target.value;
-        const user = {email, password}
-        console.log(user)
+        const password = e.target.password.value;
+        // const user = {email, password}
         
         signIn(email,password)
         .then(result => {
-            console.log(result.user)
+            // console.log(result.user)
+            if(result.user){
+                alert('login successfully')
+                navigate(location?.state ? location?.state : '/')
+            }
+            // const user = { email }  
+
+            // get access token
+            // axios.post('https://car-doctor-server-xi-plum.vercel.app/jwt', user, {withCredentials:true})
+            // .then(res => {
+            //     console.log(res.data)
+            //     if(res.data.success){
+            //         
+            //     }
+            // })
+
         })
         .catch(error => console.error(error))
+    }
+    const handleReset =() => {
+        // const email = 
+        resetPassword()
     }
 
     return (
@@ -46,7 +68,7 @@ const Login = () => {
                             </label>
                             <input type="password" name='password' placeholder="password" className="input input-bordered" required />
                             <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                <a onClick={handleReset} className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
                         </div>
                         <div className="form-control mt-6">

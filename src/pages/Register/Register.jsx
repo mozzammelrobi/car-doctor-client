@@ -13,12 +13,12 @@ const Register = () => {
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        const user = { name, email, password }
-        console.log(user)
+        // const user = { name, email, password }
+        // console.log(user)
 
         createUser(email,password)
         .then(result => {
-            console.log(result.user)
+            // console.log(result.user)
             if(result.user){
                 alert('Register sucessfully')
             }
